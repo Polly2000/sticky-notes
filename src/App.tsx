@@ -1,6 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from './hooks/redux';
+import { addNote } from './store/slices/NoteSlice';
 import GlobalStyles, { Container } from './global';
 import AddNote from './components/AddNote/AddNote';
 import Notes from './components/Notes/Notes';
@@ -13,15 +14,22 @@ const App = () => {
 
   const [noteText, setNoteText] = useState('');
 
-  // handleAction
+  const handleAction = () => {
+    if (noteText.trim().length) {
+      dispatch(addNote({id: 1, note: noteText, color: '#7bc86c'}));
+      setNoteText('');
+    }
+  }
 
   return (
     <div>
       <Container>
         <Header />
-        {/* <AddNote 
-        /> */}
-        {/* <hr /> */}
+        <AddNote
+          value={noteText}
+          updateNote={setNoteText}
+          handleAction={handleAction}
+        />
         <ul>
           <Notes />
         </ul>

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INote } from "../../models/INote";
 
 interface NoteState {
@@ -15,7 +15,7 @@ export const noteSlice = createSlice({
   reducers: {
     addNote(state, action: PayloadAction<INote>) {
       state.notes.push({
-        id: 1,
+        id: action.payload.id,
         note: action.payload.note,
         color: action.payload.color
       })

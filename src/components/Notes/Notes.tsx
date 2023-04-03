@@ -28,7 +28,7 @@ const Notes = () => {
   return (
     <div>
       <Cards>
-        {hotes.map((note: any) => (
+        {notes.map((note: any) => (
           <Cards key={note.id}>
             <Note id={note.id} note={note.note} color={note.color} />
           </Cards>
