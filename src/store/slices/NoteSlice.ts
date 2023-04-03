@@ -1,18 +1,49 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
+
 import { INote } from "../../models/INote";
+import { AppDispatch } from "../store";
 
 interface NoteState {
   notes: INote[];
+  isLoading: boolean;
+  error: string;
 }
 
 const initialState: NoteState = {
   notes: [],
+  isLoading: false,
+  error: '',
+}
+
+export const fetchNotes = () => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(noteSlice.actions.notesFetching());
+    const response = await axios.get<INote[]>('http://localhost:3001/notes');
+    dispatch(noteSlice.actions.notesFetchingSuccess(response.data));
+  } catch (e) {
+    if (e instanceof Error) {
+      dispatch(noteSlice.actions.notesFetchingError(e.message));
+    } 
+  }
 }
 
 export const noteSlice = createSlice({
   name: 'note',
   initialState,
   reducers: {
+    notesFetching(state) {
+      state.isLoading = true;
+    },
+    notesFetchingSuccess(state, action: PayloadAction<INote[]>) {
+      state.isLoading = false;
+      state.error = '';
+      state.notes = action.payload;
+    },
+    notesFetchingError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
     addNote(state, action: PayloadAction<INote>) {
       state.notes.push({
         id: action.payload.id,
