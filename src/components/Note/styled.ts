@@ -29,6 +29,12 @@ export const Card = styled.div<{bg: string}>`
   overflow-x: hidden;
   color: #fff;
   background-color: ${props => props.bg};
+
+  &:hover {
+    Button {
+      opacity: .8;
+    }
+  }
 `
 
 export const Buttons = styled.div`
@@ -37,9 +43,10 @@ export const Buttons = styled.div`
 `
 
 export const Button = styled.button`
-  opacity: .8;
+  opacity: 0;
   background-color: transparent;
   border: none;
+  margin: 5px;
   cursor: pointer;
 `
 

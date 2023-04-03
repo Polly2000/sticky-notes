@@ -13,9 +13,11 @@ const Note: FC<INote> = ({ id, note, color }) => {
   return (
     <Card bg={color}>
       <Buttons>
-        <Button onClick={() => (console.log('кликнуто'))}>
-          {/* <img src={Delete} alt="Delete note" /> */}
+        <Button onClick={() => (console.log('кликнуто по эдиту'))}>
           <img src={Edit} alt="Edit note" />
+        </Button>
+        <Button onClick={() => (console.log('кликнуто по делиту'))}>
+          <img src={Delete} alt="Delete note" />
         </Button>
       </Buttons>
       <Text> {note} </Text>
