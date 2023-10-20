@@ -1,19 +1,21 @@
 import React from 'react';
 import Header from '../Header/Header';
 import AddNote from '../AddNote/AddNote';
+import Note from '../Note/Note';
 
-import GlobalStyles, { Container } from './global';
+import GlobalStyles, { Container, AppStyles } from './global';
 import './App.css';
 
 function App() {
   return (
-    <div>
+    <AppStyles>
       <Header />
       <Container>
         <AddNote />
+        <Note color={'#7bc86c'} note={'test'} />
       </Container>
       <GlobalStyles />
-    </div>
+    </AppStyles>
   );
 }
 

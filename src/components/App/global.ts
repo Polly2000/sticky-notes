@@ -6,7 +6,6 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', system-ui, -apple-system;
-    background-color: #f5f5f5;
   }
 
   *::before,
@@ -16,12 +15,15 @@ export default createGlobalStyle`
   body {
     /* fill="#ebecf0" */
   }
-`
+`;
+
+export const AppStyles = styled.div`
+  background-color: #eff4fe;
+  height: 100vh;
+`;
 
 export const Container = styled.div`
   margin: 0 auto;
   max-width: 90vw;
-  /* height: 100vh; */
-`
-
-
+  padding-top: 20px;
+`;
