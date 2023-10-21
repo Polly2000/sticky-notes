@@ -20,8 +20,6 @@ export const Card = styled.div<{ bg: string }>`
   width: 200px;
   height: 250px;
   border-radius: 5px;
-  /* padding: 10px; */
-  margin: 10px 20px;
   text-align: center;
   font-size: 16px;
   cursor: grab;

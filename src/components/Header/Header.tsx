@@ -1,13 +1,15 @@
 import React from 'react';
-import { HeaderBlock } from './styled';
+import { Block, Title } from './styled';
 import { Container } from '../App/global';
 
 const Header = () => {
   return (
-    <HeaderBlock>
-      <Container>Sticky Notes Sticky Notes</Container>
+    <Block>
+      <Container>
+        <Title>Sticky Notes</Title>
+      </Container>
       {/* <h3>Sticky Notes</h3> */}
-    </HeaderBlock>
+    </Block>
   );
 };
 
