@@ -1,12 +1,18 @@
-import React from 'react';
 import Header from '../Header/Header';
 import AddNote from '../AddNote/AddNote';
 import Note from '../Note/Note';
 import Footer from '../Footer/Footer';
 
+import { useAppDispatch } from '../../redux/store';
+import { useSelector } from 'react-redux';
+import { selectNotes } from '../../redux/notes/selectors';
+
 import GlobalStyles, { Container, AppStyles } from './global';
 
 function App() {
+  const notes = useSelector(selectNotes);
+  console.log(notes);
+
   return (
     <AppStyles>
       <Header />
