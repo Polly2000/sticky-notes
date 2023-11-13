@@ -51,4 +51,5 @@ export const Button = styled.button`
 
 export const Text = styled.p`
   height: 200px;
+  cursor: default;
 `;

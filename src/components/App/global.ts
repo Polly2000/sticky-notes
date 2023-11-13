@@ -5,7 +5,6 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: 'Roboto', system-ui, -apple-system; */
     font-family: 'Nunito Sans', sans-serif;
   }
 
@@ -14,19 +13,12 @@ export default createGlobalStyle`
   }
 
   body {
-    /* font-family: 'Nunito Sans', sans-serif; */
-    /* fill="#ebecf0" */
   }
 
   textarea:focus, input:focus{
     outline: none;
   }
 
-`;
-
-export const AppStyles = styled.div`
-  background-color: #eff4fe;
-  height: 100vh;
 `;
 
 export const Container = styled.div`

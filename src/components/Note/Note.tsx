@@ -4,11 +4,12 @@ import Edit from '../../assets/img/edit.svg';
 import Delete from '../../assets/img/delete.svg';
 
 interface INote {
+  id: number;
   color: string;
   note: string;
 }
 
-const Note: FC<INote> = ({ color, note }) => {
+const Note: FC<INote> = ({ color, note, id }) => {
   return (
     <Card bg={color}>
       <Buttons>
