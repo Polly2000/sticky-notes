@@ -3,47 +3,57 @@
     {
       "id": 1,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation tempor incididunt ut labore et.",
-      "color": "#7bc86c"
+      "color": "#42b883"
     },
     {
       "id": 2,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#29cce5"
+      "color": "#64c4ed"
     },
     {
       "id": 3,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#cd8de5"
+      "color": "#fbc"
     },
     {
       "id": 4,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#ffaf3f"
+      "color": "#a2befa"
     },
     {
       "id": 5,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#ef7564"
+      "color": "#ffaf3f"
     },
     {
       "id": 6,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#a2befa"
+      "color": "#ef7564"
     },
     {
       "id": 7,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#42B883"
+      "color": "#cd8de5"
     },
     {
       "id": 8,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#172b4d"
+      "color": "#c9d1d3"
     },
     {
       "id": 9,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#ef7564"
+      "color": "#7bc86c"
+    },
+    {
+      "id": 10,
+      "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+      "color": "#29cce5"
+    },
+    {
+      "id": 11,
+      "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+      "color": "#ff8ed4"
     }
   ]
 }

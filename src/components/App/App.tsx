@@ -14,13 +14,11 @@ import { AppStyles, Notes } from './styled';
 
 function App() {
   const dispatch = useAppDispatch();
+  const { notes } = useSelector(selectNotes);
 
   useEffect(() => {
     dispatch(fetchNotes());
   }, []);
-
-  const { notes } = useSelector(selectNotes);
-  console.log(notes);
 
   return (
     <AppStyles>
