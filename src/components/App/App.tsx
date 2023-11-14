@@ -14,17 +14,22 @@ import { AppStyles, Notes } from './styled';
 
 function App() {
   const dispatch = useAppDispatch();
-  const { notes, statusFetchNotes, statusAddNote, statusEditNote } = useSelector(selectNotes);
+  const { notes, statusFetchNotes, statusAddNote, statusEditNote, statusRemoveNote } =
+    useSelector(selectNotes);
 
   useEffect(() => {
     dispatch(fetchNotes());
   }, []);
 
   useEffect(() => {
-    if (statusAddNote === 'success' || statusEditNote === 'success') {
+    if (
+      statusAddNote === 'success' ||
+      statusEditNote === 'success' ||
+      statusRemoveNote === 'success'
+    ) {
       dispatch(fetchNotes());
     }
-  }, [statusAddNote, statusEditNote]);
+  }, [statusAddNote, statusEditNote, statusRemoveNote]);
 
   return (
     <AppStyles>

@@ -3,3 +3,7 @@ export type NoteType = {
   note: string;
   color: string;
 };
+
+export interface IRemoveNote {
+  id?: number;
+}

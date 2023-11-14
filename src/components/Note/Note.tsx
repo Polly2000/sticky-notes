@@ -3,7 +3,7 @@ import { Card, Buttons, Button, Text } from './styled';
 
 import { useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
-import { editNote } from '../../redux/notes/asyncActions';
+import { editNote, removeNote } from '../../redux/notes/asyncActions';
 
 import Edit from '../../assets/img/edit.svg';
 import EditDark from '../../assets/img/editDark.svg';
@@ -32,7 +32,9 @@ const Note: FC<INote> = ({ color, note, id }) => {
     dispatch(editNote({ id: id, note: 'test change', color: color }));
   };
 
-  const handleDeleteButton = () => {};
+  const handleDeleteButton = () => {
+    dispatch(removeNote({ id }));
+  };
 
   return (
     <Card $bg={color} $color={textIsWhite}>

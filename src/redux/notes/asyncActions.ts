@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { NoteType } from '../note/types';
+import { NoteType, IRemoveNote } from '../note/types';
 import { backUrl } from '../store';
 
 export const fetchNotes = createAsyncThunk('notes/fetchNotes', async () => {
@@ -34,6 +34,16 @@ export const editNote = createAsyncThunk('notes/editNote', async (params: NoteTy
       note: note,
       color: color,
     });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const removeNote = createAsyncThunk('notes/removeNote', async (params: IRemoveNote) => {
+  try {
+    const { id } = params;
+    const response = await axios.delete(`${backUrl}/notes/${id}`);
     return response.data;
   } catch (error) {
     console.log(error);
