@@ -2,7 +2,8 @@ import { NoteType } from '../note/types';
 
 export type NotesType = {
   notes: NoteType[];
-  status: Status;
+  statusFetchNotes: Status;
+  statusAddNote: Status;
 };
 
 export enum Status {

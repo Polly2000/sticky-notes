@@ -26,7 +26,6 @@ export default createGlobalStyle`
   textarea:focus, input:focus{
     outline: none;
   }
-
 `;
 
 export const Container = styled.div`

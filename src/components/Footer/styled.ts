@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const FooterText = styled.p`
   color: #5b5e62;
   font-size: 14px;
+  margin-top: 8px;
   text-align: center;
 `;
 

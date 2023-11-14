@@ -54,6 +54,11 @@
       "id": 11,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
       "color": "#ff8ed4"
+    },
+    {
+      "id": 12,
+      "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+      "color": "#ffffff"
     }
   ]
 }

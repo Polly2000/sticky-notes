@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NotesType, Status } from './types';
 import { NoteType } from '../note/types';
-import { fetchNotes } from './asyncActions';
+import { fetchNotes, addNote } from './asyncActions';
 
 const initialState: NotesType = {
   notes: [],
-  status: Status.LOADING,
+  statusFetchNotes: Status.LOADING,
+  statusAddNote: Status.LOADING,
 };
 
 const notesSlice = createSlice({
@@ -15,17 +16,27 @@ const notesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchNotes.pending, (state) => {
-        state.status = Status.LOADING;
+        state.statusFetchNotes = Status.LOADING;
         state.notes = [];
       })
       .addCase(fetchNotes.fulfilled, (state, action: PayloadAction<NoteType[]>) => {
-        state.status = Status.SUCCESS;
+        state.statusFetchNotes = Status.SUCCESS;
         state.notes = action.payload;
       })
       .addCase(fetchNotes.rejected, (state) => {
-        state.status = Status.ERROR;
+        state.statusFetchNotes = Status.ERROR;
         state.notes = [];
-      });
+      })
+      .addCase(addNote.pending, (state) => {
+        state.statusAddNote = Status.LOADING;
+      })
+      .addCase(addNote.fulfilled, (state, action) => {
+        state.statusAddNote = Status.SUCCESS;
+      })
+      .addCase(addNote.rejected, (state) => {
+        state.statusAddNote = Status.ERROR;
+      })
+
   },
 });
 

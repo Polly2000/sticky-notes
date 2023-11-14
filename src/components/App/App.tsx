@@ -14,11 +14,17 @@ import { AppStyles, Notes } from './styled';
 
 function App() {
   const dispatch = useAppDispatch();
-  const { notes } = useSelector(selectNotes);
+  const { notes, statusFetchNotes, statusAddNote } = useSelector(selectNotes);
 
   useEffect(() => {
     dispatch(fetchNotes());
   }, []);
+
+  useEffect(() => {
+    if (statusAddNote === 'success') {
+      dispatch(fetchNotes());
+    }
+  }, [statusAddNote])
 
   return (
     <AppStyles>
@@ -27,9 +33,11 @@ function App() {
         <div style={{ height: '88vh', display: 'flex' }}>
           <AddNote />
           <Notes>
-            {notes.map((note) => {
+            {statusFetchNotes === 'loading' && <h4>Loading...</h4>}
+            {statusFetchNotes === 'success' && notes.map((note) => {
               return <Note key={note.id} id={note.id} note={note.note} color={note.color} />;
             })}
+            {statusFetchNotes === 'error' && <h4>Oops, something went wrong :с The request from the backend was not received</h4>}
           </Notes>
         </div>
         <Footer />

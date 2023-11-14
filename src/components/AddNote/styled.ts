@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-export const CreateNote = styled.div`
+export const CreateNote = styled.div<{bg: string}>`
   width: 300px;
   height: 250px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.bg};
   border-radius: 5px;
   margin-right: 2%;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h3<{color: string}>`
   text-align: center;
   height: 34px;
   padding-top: 8px;
-  color: #5b5e62;
+  color: ${(props) => props.color};
   font-size: 14px;
   font-weight: 700;
 `;
@@ -39,9 +39,10 @@ export const SelectColorBlock = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  margin-top: 10px;
 `;
 
-export const SelectColorButton = styled.button<{ bg: string }>`
+export const SelectColorButton = styled.button<{bg: string}>`
   width: 15px;
   height: 15px;
   border: none;
@@ -53,6 +54,10 @@ export const SelectColorButton = styled.button<{ bg: string }>`
 
   &:hover {
     border: 1px solid #525252;
+  }
+
+  &:active {
+    
   }
 `;
 

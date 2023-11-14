@@ -36,17 +36,17 @@ import styled from 'styled-components';
 // синий: #29cce5
 // розовый: #ff8ed4
 
-export const Card = styled.div<{ bg: string }>`
+export const Card = styled.div<{ bg: string, color: string }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 200px;
+  width: 250px;
   height: 250px;
-  border-radius: 3px;
-  font-size: 16px;
+  border-radius: 5px;
+  font-size: 14px;
   cursor: grab;
   overflow-x: hidden;
-  color: #fff;
+  color: ${(props) => props.color};
   background-color: ${(props) => props.bg};
 
   &:hover {
@@ -56,11 +56,11 @@ export const Card = styled.div<{ bg: string }>`
   }
 `;
 
-export const Buttons = styled.div`
+export const Buttons = styled.div<{ color: string }>`
   display: flex;
   justify-content: end;
   background-color: inherit;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid ${(props) => props.color};
 `;
 
 export const Button = styled.button`

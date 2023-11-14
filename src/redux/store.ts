@@ -8,6 +8,10 @@ export const store = configureStore({
     notes: notesSlice,
     note: noteSlice,
   },
+  // фиксит в консоли
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+  //   serializableCheck: false
+  // })
 });
 
 export const backUrl = 'http://localhost:3001';
