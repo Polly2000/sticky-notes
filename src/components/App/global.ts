@@ -12,6 +12,14 @@ export default createGlobalStyle`
   *::after {
   }
 
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #6b6e71;
+  }
+
   body {
   }
 

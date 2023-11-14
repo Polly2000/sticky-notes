@@ -42,8 +42,7 @@ export const Card = styled.div<{ bg: string }>`
   justify-content: space-between;
   width: 200px;
   height: 250px;
-  border-radius: 5px;
-  text-align: center;
+  border-radius: 3px;
   font-size: 16px;
   cursor: grab;
   overflow-x: hidden;
@@ -52,7 +51,7 @@ export const Card = styled.div<{ bg: string }>`
 
   &:hover {
     Button {
-      opacity: 0.8;
+      opacity: 0.9;
     }
   }
 `;
@@ -60,19 +59,26 @@ export const Card = styled.div<{ bg: string }>`
 export const Buttons = styled.div`
   display: flex;
   justify-content: end;
-  background-color: #fff;
-  border: 1px solid silver;
+  background-color: inherit;
+  border-bottom: 1px solid #ffffff;
 `;
 
 export const Button = styled.button`
   opacity: 0;
   background-color: transparent;
   border: none;
-  margin: 5px;
+  margin: 8px 8px 2px 5px;
+  transition: 0.3s;
   cursor: pointer;
+
+  img {
+    height: 12px;
+    width: 12px;
+  }
 `;
 
 export const Text = styled.p`
   height: 200px;
+  padding: 0px 5px;
   cursor: default;
 `;
