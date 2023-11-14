@@ -21,6 +21,7 @@ export default createGlobalStyle`
   }
 
   body {
+    scroll-behavior: smooth;
   }
 
   textarea:focus, input:focus{

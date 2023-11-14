@@ -24,7 +24,7 @@ function App() {
     if (statusAddNote === 'success') {
       dispatch(fetchNotes());
     }
-  }, [statusAddNote])
+  }, [statusAddNote]);
 
   return (
     <AppStyles>
@@ -34,10 +34,13 @@ function App() {
           <AddNote />
           <Notes>
             {statusFetchNotes === 'loading' && <h4>Loading...</h4>}
-            {statusFetchNotes === 'success' && notes.map((note) => {
-              return <Note key={note.id} id={note.id} note={note.note} color={note.color} />;
-            })}
-            {statusFetchNotes === 'error' && <h4>Oops, something went wrong :с The request from the backend was not received</h4>}
+            {statusFetchNotes === 'success' &&
+              notes.map((note) => {
+                return <Note key={note.id} id={note.id} note={note.note} color={note.color} />;
+              })}
+            {statusFetchNotes === 'error' && (
+              <h4>Oops, something went wrong :с The request from the backend was not received</h4>
+            )}
           </Notes>
         </div>
         <Footer />

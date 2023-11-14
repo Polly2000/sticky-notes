@@ -16,26 +16,33 @@ import {
 } from './styled';
 
 const AddNote = () => {
-  const [blockColor, setBlockColor] = useState('#ffffff');
-  const [titleColor, setTitleColor] = useState('#5b5e62');
+  const [noteColor, setNoteColor] = useState<string>('#ffffff');
+  const [noteText, setNoteText] = useState<string>('');
+  const [textIsWhite, setTextIsWhite] = useState<boolean>(true);
   const dispatch = useAppDispatch();
   const createNote = () => {
-    dispatch(addNote({ note: 'this is new note', color: '#f5dd29' }));
+    setNoteText('');
+    setNoteColor('#ffffff');
+    dispatch(addNote({ note: noteText, color: noteColor }));
   };
 
   useEffect(() => {
-    if (blockColor !== '#ffffff') {
-      setTitleColor('#ffffff');
+    if (noteColor === '#ffffff') {
+      setTextIsWhite(false);
     } else {
-      setTitleColor('#5b5e62');
+      setTextIsWhite(true);
     }
-  }, [blockColor]);
+  }, [noteColor]);
 
   return (
-    <CreateNote $bg={blockColor}>
-      <Title $color={titleColor}>Create Note</Title>
+    <CreateNote $bg={noteColor}>
+      <Title $color={textIsWhite}>Create Note</Title>
       <Block>
-        <Textarea placeholder="Enter your note here"></Textarea>
+        <Textarea
+          placeholder="Enter your note here.."
+          value={noteText}
+          onChange={(e) => setNoteText(e.target.value)}
+        />
         <SelectColorBlock>
           {/* пастельные цвета */}
           {/* <SelectColorButton bg={'#c9d1d3'} />
@@ -64,18 +71,18 @@ const AddNote = () => {
           <SelectColorButton bg={''} /> */}
 
           {/* финальные цвета  */}
-          <SelectColorButton $bg={'#ffffff'} onClick={() => setBlockColor('#ffffff')} />
-          <SelectColorButton $bg={'#42b883'} onClick={() => setBlockColor('#42b883')} />
-          <SelectColorButton $bg={'#64c4ed'} onClick={() => setBlockColor('#64c4ed')} />
-          <SelectColorButton $bg={'#fbc'} onClick={() => setBlockColor('#fbc')} />
-          <SelectColorButton $bg={'#a2befa'} onClick={() => setBlockColor('#a2befa')} />
-          <SelectColorButton $bg={'#ffaf3f'} onClick={() => setBlockColor('#ffaf3f')} />
-          <SelectColorButton $bg={'#ef7564'} onClick={() => setBlockColor('#ef7564')} />
-          <SelectColorButton $bg={'#cd8de5'} onClick={() => setBlockColor('#cd8de5')} />
-          <SelectColorButton $bg={'#c9d1d3'} onClick={() => setBlockColor('#c9d1d3')} />
-          <SelectColorButton $bg={'#7bc86c'} onClick={() => setBlockColor('#7bc86c')} />
-          <SelectColorButton $bg={'#29cce5'} onClick={() => setBlockColor('#29cce5')} />
-          <SelectColorButton $bg={'#ff8ed4'} onClick={() => setBlockColor('#ff8ed4')} />
+          <SelectColorButton $bg={'#ffffff'} onClick={() => setNoteColor('#ffffff')} />
+          <SelectColorButton $bg={'#42b883'} onClick={() => setNoteColor('#42b883')} />
+          <SelectColorButton $bg={'#64c4ed'} onClick={() => setNoteColor('#64c4ed')} />
+          <SelectColorButton $bg={'#fbc'} onClick={() => setNoteColor('#fbc')} />
+          <SelectColorButton $bg={'#a2befa'} onClick={() => setNoteColor('#a2befa')} />
+          <SelectColorButton $bg={'#ffaf3f'} onClick={() => setNoteColor('#ffaf3f')} />
+          <SelectColorButton $bg={'#ef7564'} onClick={() => setNoteColor('#ef7564')} />
+          <SelectColorButton $bg={'#cd8de5'} onClick={() => setNoteColor('#cd8de5')} />
+          <SelectColorButton $bg={'#c9d1d3'} onClick={() => setNoteColor('#c9d1d3')} />
+          <SelectColorButton $bg={'#7bc86c'} onClick={() => setNoteColor('#7bc86c')} />
+          <SelectColorButton $bg={'#29cce5'} onClick={() => setNoteColor('#29cce5')} />
+          <SelectColorButton $bg={'#ff8ed4'} onClick={() => setNoteColor('#ff8ed4')} />
         </SelectColorBlock>
         <CreateButton onClick={createNote}>Add new</CreateButton>
       </Block>

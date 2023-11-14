@@ -8,11 +8,11 @@ export const CreateNote = styled.div<{ $bg: string }>`
   margin-right: 2%;
 `;
 
-export const Title = styled.h3<{ $color: string }>`
+export const Title = styled.h3<{ $color: boolean }>`
   text-align: center;
   height: 34px;
   padding-top: 8px;
-  color: ${(props) => props.$color};
+  color: ${(props) => (props.$color ? '#ffffff' : '#5b5e62')};
   font-size: 14px;
   font-weight: 700;
 `;

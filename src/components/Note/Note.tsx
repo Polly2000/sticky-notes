@@ -12,22 +12,24 @@ interface INote {
 }
 
 const Note: FC<INote> = ({ color, note, id }) => {
-  const [textColor, setTextColor] = useState('#ffffff');
+  const [textIsWhite, setTextIsWhite] = useState<boolean>(false);
 
   useEffect(() => {
     if (color === '#ffffff') {
-      setTextColor('#5b5e62');
+      setTextIsWhite(false);
+    } else {
+      setTextIsWhite(true);
     }
   }, []);
 
   return (
-    <Card $bg={color} $color={textColor}>
-      <Buttons $color={textColor}>
+    <Card $bg={color} $color={textIsWhite}>
+      <Buttons $color={textIsWhite}>
         <Button onClick={() => console.log('кликнуто по эдиту')}>
-          <img src={textColor === '#ffffff' ? Edit : EditDark} alt="Edit note" />
+          <img src={textIsWhite ? Edit : EditDark} alt="Edit note" />
         </Button>
         <Button onClick={() => console.log('кликнуто по делиту')}>
-          <img src={textColor === '#ffffff' ? Delete : DeleteDark} alt="Delete note" />
+          <img src={textIsWhite ? Delete : DeleteDark} alt="Delete note" />
         </Button>
       </Buttons>
       <Text> {note} </Text>

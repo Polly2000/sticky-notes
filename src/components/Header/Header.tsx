@@ -8,7 +8,6 @@ const Header = () => {
       <Container>
         <Title>Sticky Notes</Title>
       </Container>
-      {/* <h3>Sticky Notes</h3> */}
     </Block>
   );
 };

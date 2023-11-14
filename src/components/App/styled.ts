@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const AppStyles = styled.div`
   background-color: #eff4fe;
-  /* overflow-y: scroll; */
   height: 100vh;
 `;
 
