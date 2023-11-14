@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-export const CreateNote = styled.div<{bg: string}>`
+export const CreateNote = styled.div<{ $bg: string }>`
   width: 300px;
   height: 250px;
-  background-color: ${(props) => props.bg};
+  background-color: ${(props) => props.$bg};
   border-radius: 5px;
   margin-right: 2%;
 `;
 
-export const Title = styled.h3<{color: string}>`
+export const Title = styled.h3<{ $color: string }>`
   text-align: center;
   height: 34px;
   padding-top: 8px;
-  color: ${(props) => props.color};
+  color: ${(props) => props.$color};
   font-size: 14px;
   font-weight: 700;
 `;
@@ -42,13 +42,13 @@ export const SelectColorBlock = styled.div`
   margin-top: 10px;
 `;
 
-export const SelectColorButton = styled.button<{bg: string}>`
+export const SelectColorButton = styled.button<{ $bg: string }>`
   width: 15px;
   height: 15px;
   border: none;
   border-radius: 50%;
   transition: 0.3s;
-  background-color: ${(props) => props.bg};
+  background-color: ${(props) => props.$bg};
   color: #fff;
   cursor: pointer;
 
@@ -57,7 +57,6 @@ export const SelectColorButton = styled.button<{bg: string}>`
   }
 
   &:active {
-    
   }
 `;
 

@@ -13,16 +13,16 @@ interface INote {
 
 const Note: FC<INote> = ({ color, note, id }) => {
   const [textColor, setTextColor] = useState('#ffffff');
-  
+
   useEffect(() => {
     if (color === '#ffffff') {
       setTextColor('#5b5e62');
     }
-  }, [])
+  }, []);
 
   return (
-    <Card bg={color} color={textColor}>
-      <Buttons color={textColor}>
+    <Card $bg={color} $color={textColor}>
+      <Buttons $color={textColor}>
         <Button onClick={() => console.log('кликнуто по эдиту')}>
           <img src={textColor === '#ffffff' ? Edit : EditDark} alt="Edit note" />
         </Button>

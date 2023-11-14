@@ -36,7 +36,7 @@ import styled from 'styled-components';
 // синий: #29cce5
 // розовый: #ff8ed4
 
-export const Card = styled.div<{ bg: string, color: string }>`
+export const Card = styled.div<{ $bg: string; $color: string }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,8 +46,8 @@ export const Card = styled.div<{ bg: string, color: string }>`
   font-size: 14px;
   cursor: grab;
   overflow-x: hidden;
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.bg};
+  color: ${(props) => props.$color};
+  background-color: ${(props) => props.$bg};
 
   &:hover {
     Button {
@@ -56,11 +56,11 @@ export const Card = styled.div<{ bg: string, color: string }>`
   }
 `;
 
-export const Buttons = styled.div<{ color: string }>`
+export const Buttons = styled.div<{ $color: string }>`
   display: flex;
   justify-content: end;
   background-color: inherit;
-  border-bottom: 1px solid ${(props) => props.color};
+  border-bottom: 1px solid ${(props) => props.$color};
 `;
 
 export const Button = styled.button`
