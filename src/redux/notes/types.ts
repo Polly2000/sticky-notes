@@ -4,6 +4,8 @@ export type NotesType = {
   notes: NoteType[];
   statusFetchNotes: Status;
   statusAddNote: Status;
+  statusEditNote: Status;
+  statusRemoveNote: Status;
 };
 
 export enum Status {

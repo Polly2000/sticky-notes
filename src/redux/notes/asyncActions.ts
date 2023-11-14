@@ -25,3 +25,17 @@ export const addNote = createAsyncThunk('notes/addNote', async (params: NoteType
     console.log(error);
   }
 });
+
+export const editNote = createAsyncThunk('notes/editNote', async (params: NoteType) => {
+  try {
+    const { id, note, color } = params;
+    const response = await axios.put(`${backUrl}/notes/${id}`, {
+      id: id,
+      note: note,
+      color: color,
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
