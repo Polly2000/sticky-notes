@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Card, Buttons, Button, Text } from './styled';
+import { Card, Buttons, Button, Text, Modal, ModalContent } from './styled';
 
 import { useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
@@ -19,6 +19,7 @@ interface INote {
 const Note: FC<INote> = ({ color, note, id }) => {
   const dispatch = useAppDispatch();
   const [textIsWhite, setTextIsWhite] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     if (color === '#ffffff') {
@@ -28,24 +29,33 @@ const Note: FC<INote> = ({ color, note, id }) => {
     }
   }, []);
 
-  const handleEditButton = () => {
+  const handleEditNote = () => {
     dispatch(editNote({ id: id, note: 'test change', color: color }));
   };
 
-  const handleDeleteButton = () => {
+  const handleDeleteNote = () => {
     dispatch(removeNote({ id }));
   };
 
   return (
     <Card $bg={color} $color={textIsWhite}>
       <Buttons $color={textIsWhite}>
-        <Button onClick={() => handleEditButton()}>
+        <Button onClick={() => handleEditNote()}>
           <img src={textIsWhite ? Edit : EditDark} alt="Edit note" />
         </Button>
-        <Button onClick={() => handleDeleteButton()}>
+        <Button onClick={() => setShowModal(true)}>
           <img src={textIsWhite ? Delete : DeleteDark} alt="Delete note" />
         </Button>
       </Buttons>
+      {showModal &&
+        <Modal>
+          <ModalContent>
+            <p>Удалить эту заметку?</p>
+            <button onClick={() => handleDeleteNote()}>Да</button>
+            <button onClick={() => setShowModal(false)}>Нет</button>
+          </ModalContent>
+        </Modal>
+      }
       <Text> {note} </Text>
     </Card>
   );
