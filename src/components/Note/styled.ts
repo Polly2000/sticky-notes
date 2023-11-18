@@ -7,7 +7,7 @@ export const Card = styled.div<{ $bg: string; $color: boolean }>`
   width: 250px;
   height: 250px;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 16px;
   cursor: grab;
   overflow-x: hidden;
   color: ${(props) => (props.$color ? '#ffffff' : '#5b5e62')};

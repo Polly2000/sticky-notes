@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Block = styled.div`
+export const Block = styled.header`
   height: 60px;
   background-color: rgba(255, 255, 255, 0.8);
 `;

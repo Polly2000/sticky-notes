@@ -3,14 +3,14 @@ import { FooterText, Link } from './styled';
 
 const Footer = () => {
   return (
-    <div>
+    <footer>
       <FooterText>
         ©2023 Created by{' '}
         <Link href="https://github.com/Polly2000" rel="noreferrer" target="_blank">
           Polly2000
         </Link>
       </FooterText>
-    </div>
+    </footer>
   );
 };
 

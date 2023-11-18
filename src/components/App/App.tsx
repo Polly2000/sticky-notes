@@ -44,7 +44,7 @@ function App() {
             justifyContent: 'space-between',
             flexDirection: 'column',
           }}>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <AddNote />
             <div>
               <Notes>

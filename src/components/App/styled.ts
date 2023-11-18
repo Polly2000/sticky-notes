@@ -7,8 +7,8 @@ export const Notes = styled.div`
   gap: 10px;
   overflow-y: scroll;
   flex-wrap: wrap;
-  max-height: 80vh;
-  justify-content: flex-end;
+  max-height: 82vh;
+  justify-content: center;
 
   &::-webkit-scrollbar {
     width: 0;
