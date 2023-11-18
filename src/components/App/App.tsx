@@ -12,7 +12,7 @@ import { selectNotes } from '../../redux/notes/selectors';
 import { fetchNotes } from '../../redux/notes/asyncActions';
 
 import GlobalStyles, { Container } from './global';
-import { Notes, Error, ErrorElem, BottomBlock, ErrorButton } from './styled';
+import { Notes, Error, ErrorElem, BottomBlock, ErrorButton, Bin } from './styled';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -44,9 +44,14 @@ function App() {
             justifyContent: 'space-between',
             flexDirection: 'column',
           }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '20px' }}>
             <AddNote />
-            <div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '10px',
+              }}>
               <Notes>
                 {statusFetchNotes === 'loading' && <h4>Loading...</h4>}
                 {statusFetchNotes === 'success' &&
@@ -59,6 +64,7 @@ function App() {
                   </h4>
                 )}
               </Notes>
+              <Bin>bin zone</Bin>
             </div>
           </div>
         </div>

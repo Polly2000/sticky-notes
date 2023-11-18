@@ -33,6 +33,7 @@ export default createGlobalStyle`
 export const Container = styled.div`
   margin: 0 auto;
   max-width: 90vw;
+  min-width: 1024px;
   padding-top: 20px;
 `;
 

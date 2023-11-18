@@ -7,14 +7,25 @@ export const Notes = styled.div`
   gap: 10px;
   overflow-y: scroll;
   flex-wrap: wrap;
-  max-height: 82vh;
-  justify-content: center;
+  max-height: 72vh;
 
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
     display: none;
   }
+`;
+
+export const Bin = styled.div`
+  display: flex;
+  align-self: flex-end;
+  width: 250px;
+  height: 150px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: grab;
+  overflow-x: hidden;
+  background-color: red;
 `;
 
 export const BottomBlock = styled.div`

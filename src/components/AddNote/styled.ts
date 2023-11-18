@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CreateNote = styled.div<{ $bg: string }>`
-  width: 300px;
+  min-width: 300px;
   height: 250px;
   background-color: ${(props) => props.$bg};
   border-radius: 5px;
