@@ -1,8 +1,8 @@
 import React, { FC, useState, useEffect } from 'react';
 import {
   Card,
-  Buttons,
-  Button,
+  ButtonsIcon,
+  ButtonIcon,
   Text,
   Modal,
   ModalContent,
@@ -11,8 +11,8 @@ import {
   Textarea,
   SelectColorBlock,
   SelectColorButton,
-  EditButton,
 } from './styled';
+import { Button } from '../App/global';
 
 import { useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
@@ -49,18 +49,24 @@ const Note: FC<INote> = ({ color, note, id }) => {
     dispatch(removeNote({ id }));
   };
 
+  const handleCancelEdit = () => {
+    setNoteColor(color);
+    setNoteText(note);
+    setEditIsClicked(false);
+  };
+
   return (
     <div>
       {!editIsClicked ? (
         <Card $bg={noteColor} $color={textIsWhite}>
-          <Buttons $color={textIsWhite}>
-            <Button onClick={() => setEditIsClicked(true)}>
+          <ButtonsIcon $color={textIsWhite}>
+            <ButtonIcon onClick={() => setEditIsClicked(true)}>
               <img src={textIsWhite ? Edit : EditDark} alt="Edit note" />
-            </Button>
-            <Button onClick={() => setShowModal(true)}>
+            </ButtonIcon>
+            <ButtonIcon onClick={() => setShowModal(true)}>
               <img src={textIsWhite ? Delete : DeleteDark} alt="Delete note" />
-            </Button>
-          </Buttons>
+            </ButtonIcon>
+          </ButtonsIcon>
           {showModal && (
             <Modal>
               <ModalContent>
@@ -77,6 +83,8 @@ const Note: FC<INote> = ({ color, note, id }) => {
           <EditTitle $color={textIsWhite}>Edit Note</EditTitle>
           <Block>
             <Textarea
+              id="add_note"
+              name="add_note"
               placeholder="Enter your note here.."
               value={noteText}
               onChange={(e) => setNoteText(e.target.value)}
@@ -95,10 +103,13 @@ const Note: FC<INote> = ({ color, note, id }) => {
               <SelectColorButton $bg={'#29cce5'} onClick={() => setNoteColor('#29cce5')} />
               <SelectColorButton $bg={'#ff8ed4'} onClick={() => setNoteColor('#ff8ed4')} />
             </SelectColorBlock>
-            <EditButton
-              onClick={() => dispatch(editNote({ id: id, note: noteText, color: noteColor }))}>
-              Save
-            </EditButton>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
+              <Button
+                onClick={() => dispatch(editNote({ id: id, note: noteText, color: noteColor }))}>
+                Save
+              </Button>
+              <Button onClick={handleCancelEdit}>Cancel</Button>
+            </div>
           </Block>
         </Card>
       )}

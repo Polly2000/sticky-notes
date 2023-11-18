@@ -5,7 +5,6 @@ export const CreateNote = styled.div<{ $bg: string }>`
   height: 250px;
   background-color: ${(props) => props.$bg};
   border-radius: 5px;
-  margin-right: 2%;
 `;
 
 export const Title = styled.h3<{ $color: boolean }>`
@@ -22,13 +21,13 @@ export const Block = styled.div`
   height: 216px;
   justify-content: space-between;
   flex-direction: column;
-  padding: 10px;
+  padding: 8px;
 `;
 
 export const Textarea = styled.textarea`
   display: flex;
   width: 280px;
-  height: 160px;
+  height: 150px;
   padding: 10px;
   resize: none;
   border: none;
@@ -39,7 +38,6 @@ export const SelectColorBlock = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 10px;
 `;
 
 export const SelectColorButton = styled.button<{ $bg: string }>`
@@ -57,20 +55,5 @@ export const SelectColorButton = styled.button<{ $bg: string }>`
   }
 
   &:active {
-  }
-`;
-
-export const CreateButton = styled.button`
-  border: none;
-  height: 28px;
-  border-radius: 3px;
-  transition: 0.3s;
-  background-color: #1976d2;
-  color: #ffffff;
-  margin-top: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #0071ff;
   }
 `;

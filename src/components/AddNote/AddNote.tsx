@@ -1,29 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from '../App/global';
+import { Container, Button } from '../App/global';
 
 import { useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import { addNote } from '../../redux/notes/asyncActions';
 
-import {
-  CreateNote,
-  Title,
-  Block,
-  Textarea,
-  SelectColorBlock,
-  SelectColorButton,
-  CreateButton,
-} from './styled';
+import { CreateNote, Title, Block, Textarea, SelectColorBlock, SelectColorButton } from './styled';
 
 const AddNote = () => {
   const [noteColor, setNoteColor] = useState<string>('#ffffff');
   const [noteText, setNoteText] = useState<string>('');
   const [textIsWhite, setTextIsWhite] = useState<boolean>(true);
+
   const dispatch = useAppDispatch();
   const createNote = () => {
-    setNoteText('');
-    setNoteColor('#ffffff');
-    dispatch(addNote({ note: noteText, color: noteColor }));
+    if (noteText) {
+      setNoteText('');
+      setNoteColor('#ffffff');
+      dispatch(addNote({ note: noteText, color: noteColor }));
+    }
   };
 
   useEffect(() => {
@@ -57,7 +52,7 @@ const AddNote = () => {
           <SelectColorButton $bg={'#29cce5'} onClick={() => setNoteColor('#29cce5')} />
           <SelectColorButton $bg={'#ff8ed4'} onClick={() => setNoteColor('#ff8ed4')} />
         </SelectColorBlock>
-        <CreateButton onClick={createNote}>Add new</CreateButton>
+        <Button onClick={createNote}>Add new</Button>
       </Block>
     </CreateNote>
   );

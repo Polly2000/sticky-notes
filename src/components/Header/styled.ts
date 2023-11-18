@@ -6,7 +6,6 @@ export const Block = styled.div`
 `;
 
 export const Title = styled.h4`
-  /* color: #5c5c5c; */
   color: #5b5e62;
   letter-spacing: 0.5px;
   font-size: 16px;

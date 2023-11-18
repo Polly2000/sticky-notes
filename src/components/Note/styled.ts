@@ -1,41 +1,5 @@
 import styled from 'styled-components';
 
-// цвета картинок:
-// зеленый: #7bc86c
-// синий: #29cce5
-// желтый: #f5dd29 (не используется)
-// оранжевый: #ffaf3f
-// красный: #ef7564
-// фиолетовый: #cd8de5
-// темно-синий: #172b4d
-// розовый: #ff8ed4
-// еще голубой: #64C4ED
-// еще фиолетовый: #a2befa
-// еще зеленый: #42B883
-
-// более пастельные цвета:
-// серый: #c9d1d3
-// зеленый: #42b883
-// голубой: #64c4ed
-// розовый: #fbc
-// салатовый: #b6e6bd
-// персиковый: #fed6bc
-// фиолетовый: #a2befa
-// красный: #ff6464
-
-// финальные цвета:
-// зеленый: #42b883
-// голубой: #64c4ed
-// розовый: #fbc
-// фиолетовый: #a2befa
-// оранжевый: #ffaf3f
-// красный: #ef7564
-// фиолетовый: #cd8de5
-// серый: #c9d1d3
-// зеленый: #7bc86c
-// синий: #29cce5
-// розовый: #ff8ed4
-
 export const Card = styled.div<{ $bg: string; $color: boolean }>`
   display: flex;
   flex-direction: column;
@@ -56,14 +20,13 @@ export const Card = styled.div<{ $bg: string; $color: boolean }>`
   }
 `;
 
-export const Buttons = styled.div<{ $color: boolean }>`
+export const ButtonsIcon = styled.div<{ $color: boolean }>`
   display: flex;
   justify-content: end;
   background-color: inherit;
-  /* border-bottom: 1px solid ${(props) => (props.$color ? '#ffffff' : '#5b5e62')}; */
 `;
 
-export const Button = styled.button`
+export const ButtonIcon = styled.button`
   opacity: 0;
   background-color: transparent;
   border: none;
@@ -119,15 +82,14 @@ export const Block = styled.div`
   height: 216px;
   justify-content: space-between;
   flex-direction: column;
-  padding: 10px;
+  padding: 8px;
 `;
 
 export const Textarea = styled.textarea`
   display: flex;
   margin: 0 auto;
   width: 100%;
-  /* width: 280px; */
-  height: 160px;
+  height: 150px;
   padding: 10px;
   resize: none;
   border: none;
@@ -138,7 +100,6 @@ export const SelectColorBlock = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 10px;
 `;
 
 export const SelectColorButton = styled.button<{ $bg: string }>`
@@ -156,20 +117,5 @@ export const SelectColorButton = styled.button<{ $bg: string }>`
   }
 
   &:active {
-  }
-`;
-
-export const EditButton = styled.button`
-  border: none;
-  height: 28px;
-  border-radius: 3px;
-  transition: 0.3s;
-  background-color: #1976d2;
-  color: #ffffff;
-  margin-top: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #0071ff;
   }
 `;
