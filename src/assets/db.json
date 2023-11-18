@@ -2,63 +2,75 @@
   "notes": [
     {
       "id": 1,
-      "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation tempor incididunt ut labore et.",
-      "color": "#42b883"
+      "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+      "color": "#7bc86c",
+      "order": 1
     },
     {
       "id": 2,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#64c4ed"
+      "color": "#64c4ed",
+      "order": 2
     },
     {
       "id": 3,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#fbc"
+      "color": "#fbc",
+      "order": 3
     },
     {
       "id": 4,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#a2befa"
+      "color": "#a2befa",
+      "order": 4
     },
     {
       "id": 5,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#ffaf3f"
+      "color": "#ffaf3f",
+      "order": 5
     },
     {
       "id": 6,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#ef7564"
+      "color": "#ef7564",
+      "order": 6
     },
     {
       "id": 7,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#cd8de5"
+      "color": "#cd8de5",
+      "order": 7
     },
     {
       "id": 8,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#c9d1d3"
+      "color": "#c9d1d3",
+      "order": 8
     },
     {
       "id": 9,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#7bc86c"
+      "color": "#7bc86c",
+      "order": 9
     },
     {
       "id": 10,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#29cce5"
+      "color": "#29cce5",
+      "order": 10
     },
     {
       "id": 11,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#ff8ed4"
+      "color": "#ff8ed4",
+      "order": 11
     },
     {
       "id": 12,
       "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
-      "color": "#ffffff"
+      "color": "#ffffff",
+      "order": 12
     }
   ]
 }

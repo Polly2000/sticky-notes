@@ -27,9 +27,25 @@ interface INote {
   id?: number;
   color: string;
   note: string;
+  order?: any;
+  data: any;
+  dragStartHandler: any;
+  dragEndHandler: any;
+  dragOverHandler: any;
+  dropHandler: any;
 }
 
-const Note: FC<INote> = ({ color, note, id }) => {
+const Note: FC<INote> = ({
+  color,
+  note,
+  id,
+  order,
+  data,
+  dragStartHandler,
+  dragEndHandler,
+  dragOverHandler,
+  dropHandler,
+}) => {
   const dispatch = useAppDispatch();
   const [textIsWhite, setTextIsWhite] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -56,7 +72,13 @@ const Note: FC<INote> = ({ color, note, id }) => {
   };
 
   return (
-    <div>
+    <div
+      draggable={true}
+      onDragStart={(e: any) => dragStartHandler(e, data)}
+      onDragLeave={(e: any) => dragEndHandler(e)}
+      onDragEnd={(e: any) => dragEndHandler(e)}
+      onDragOver={(e: any) => dragOverHandler(e)}
+      onDrop={(e: any) => dropHandler(e, data)}>
       {!editIsClicked ? (
         <Card $bg={noteColor} $color={textIsWhite}>
           <ButtonsIcon $color={textIsWhite}>
@@ -105,7 +127,9 @@ const Note: FC<INote> = ({ color, note, id }) => {
             </SelectColorBlock>
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
               <Button
-                onClick={() => dispatch(editNote({ id: id, note: noteText, color: noteColor }))}>
+                onClick={() =>
+                  dispatch(editNote({ id: id, note: noteText, color: noteColor, order: id }))
+                }>
                 Save
               </Button>
               <Button onClick={handleCancelEdit}>Cancel</Button>

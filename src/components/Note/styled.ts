@@ -6,7 +6,7 @@ export const Card = styled.div<{ $bg: string; $color: boolean }>`
   justify-content: space-between;
   width: 250px;
   height: 250px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: grab;
   overflow-x: hidden;

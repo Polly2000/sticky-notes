@@ -23,7 +23,6 @@ export const Bin = styled.div`
   height: 150px;
   border-radius: 5px;
   font-size: 16px;
-  cursor: grab;
   overflow-x: hidden;
   background-color: red;
 `;
@@ -36,6 +35,8 @@ export const BottomBlock = styled.div`
 `;
 
 export const Error = styled.div`
+  position: absolute;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   width: 100%;

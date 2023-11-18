@@ -5,6 +5,7 @@ const initialState: NoteType = {
   id: 0,
   note: '',
   color: '#fff',
+  order: 0,
 };
 
 const noteSlice = createSlice({
