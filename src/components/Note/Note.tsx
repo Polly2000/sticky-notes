@@ -52,6 +52,7 @@ const Note: FC<INote> = ({
   const [editIsClicked, setEditIsClicked] = useState<boolean>(false);
   const [noteText, setNoteText] = useState<string>(note);
   const [noteColor, setNoteColor] = useState<string>(color);
+  const [noteOrder, setNoteOrder] = useState<string>(order);
 
   useEffect(() => {
     if (color === '#ffffff') {
@@ -68,8 +69,11 @@ const Note: FC<INote> = ({
   const handleCancelEdit = () => {
     setNoteColor(color);
     setNoteText(note);
+    setNoteOrder(order);
     setEditIsClicked(false);
   };
+
+  // noteOrder && console.log(noteOrder);
 
   return (
     <div
@@ -128,7 +132,7 @@ const Note: FC<INote> = ({
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
               <Button
                 onClick={() =>
-                  dispatch(editNote({ id: id, note: noteText, color: noteColor, order: id }))
+                  dispatch(editNote({ id: id, note: noteText, color: noteColor, order: noteOrder }))
                 }>
                 Save
               </Button>

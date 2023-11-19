@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Container, Button } from '../App/global';
 
 import { useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
+import { selectNotes } from '../../redux/notes/selectors';
 import { addNote } from '../../redux/notes/asyncActions';
 
 import { CreateNote, Title, Block, Textarea, SelectColorBlock, SelectColorButton } from './styled';
 
-const AddNote = () => {
+const AddNote: FC<any> = ({ order }) => {
+  const dispatch = useAppDispatch();
+  const { notes } = useSelector(selectNotes);
   const [noteColor, setNoteColor] = useState<string>('#ffffff');
   const [noteText, setNoteText] = useState<string>('');
+  const [noteOrder, setNoteOrder] = useState<number>(0);
   const [textIsWhite, setTextIsWhite] = useState<boolean>(true);
-
-  const dispatch = useAppDispatch();
-  const createNote = () => {
-    if (noteText) {
-      setNoteText('');
-      setNoteColor('#ffffff');
-      dispatch(addNote({ note: noteText, color: noteColor }));
-    }
-  };
 
   useEffect(() => {
     if (noteColor === '#ffffff') {
@@ -28,6 +23,14 @@ const AddNote = () => {
       setTextIsWhite(true);
     }
   }, [noteColor]);
+
+  const createNote = () => {
+    if (noteText) {
+      setNoteText('');
+      setNoteColor('#ffffff');
+      dispatch(addNote({ note: noteText, color: noteColor, order: order }));
+    }
+  };
 
   return (
     <CreateNote $bg={noteColor}>

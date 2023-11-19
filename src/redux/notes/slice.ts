@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NotesType, Status } from './types';
 import { NoteType } from '../note/types';
-import { fetchNotes, addNote, editNote, removeNote } from './asyncActions';
+import { fetchNotes, setDraggableNotes, addNote, editNote, removeNote } from './asyncActions';
 
 const initialState: NotesType = {
   notes: [],
+  // lastId: 0,
   statusFetchNotes: Status.LOADING,
+  statusSetNotes: Status.LOADING,
   statusAddNote: Status.LOADING,
   statusEditNote: Status.LOADING,
   statusRemoveNote: Status.LOADING,
@@ -32,6 +34,16 @@ const notesSlice = createSlice({
       .addCase(fetchNotes.rejected, (state) => {
         state.statusFetchNotes = Status.ERROR;
         state.notes = [];
+      })
+      .addCase(setDraggableNotes.pending, (state) => {
+        state.statusSetNotes = Status.LOADING;
+      })
+      .addCase(setDraggableNotes.fulfilled, (state, action) => {
+        state.statusSetNotes = Status.SUCCESS;
+        state.notes = action.payload;
+      })
+      .addCase(setDraggableNotes.rejected, (state) => {
+        state.statusSetNotes = Status.ERROR;
       })
       .addCase(addNote.pending, (state) => {
         state.statusAddNote = Status.LOADING;

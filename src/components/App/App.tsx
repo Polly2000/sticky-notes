@@ -11,12 +11,15 @@ import { setIsError } from '../../redux/error/slice';
 import { setNotes } from '../../redux/notes/slice';
 import { selectNotes } from '../../redux/notes/selectors';
 import { fetchNotes } from '../../redux/notes/asyncActions';
+import { setDraggableNotes } from '../../redux/notes/asyncActions';
 
 import GlobalStyles, { Container } from './global';
 import { Notes, Error, ErrorElem, BottomBlock, ErrorButton, Bin } from './styled';
 
 function App() {
   const dispatch = useAppDispatch();
+  const [currentNote, setCurrentNote] = useState<any | any>(null);
+  const [order, setOrder] = useState<number>(0);
   const { isError } = useSelector(selectError);
   const { notes, statusFetchNotes, statusAddNote, statusEditNote, statusRemoveNote } =
     useSelector(selectNotes);
@@ -32,26 +35,22 @@ function App() {
       statusRemoveNote === 'success'
     ) {
       dispatch(fetchNotes());
+      setOrder(notes.length + 1);
     }
   }, [statusAddNote, statusEditNote, statusRemoveNote]);
 
-  // const dragOver = (e: any) => {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  // };
-
-  // const dropNote = (e: any) => {
-  //   e.target.style.left = `${e.pageX - 50}px`;
-  //   e.target.style.top = `${e.pageY - 50}px`;
-  // };
+  useEffect(() => {
+    if (notes.length) {
+      setOrder(notes.length + 1);
+    }
+  }, [notes]);
 
   //drag&drop
-  const [currentNote, setCurrentNote] = useState<any | any>(null);
   const dragStartHandler = (e: any, data: any) => {
     console.log('drag', data);
     setCurrentNote(data);
     e.target.style.border = '1px solid #525252';
-    e.target.style.borderRadius = '5px';
+    e.target.style.borderRadius = '10px';
   };
 
   const dragEndHandler = (e: any) => {
@@ -107,7 +106,7 @@ function App() {
               gap: '20px',
               width: '100%',
             }}>
-            <AddNote />
+            {order !== 0 && <AddNote order={order} />}
             <div
               style={{
                 display: 'flex',
@@ -125,6 +124,7 @@ function App() {
                         id={note.id}
                         note={note.note}
                         color={note.color}
+                        order={note.order}
                         data={note}
                         dragStartHandler={dragStartHandler}
                         dragEndHandler={dragEndHandler}
