@@ -28,11 +28,10 @@ export const setDraggableNotes = createAsyncThunk('notes/setNotes', async (param
 
 export const addNote = createAsyncThunk('notes/addNote', async (params: NoteType) => {
   try {
-    const { note, color, order } = params;
+    const { note, color } = params;
     const response = await axios.post(`${backUrl}/notes`, {
       note: note,
       color: color,
-      order: order,
     });
     return response.data;
   } catch (error) {
@@ -42,12 +41,11 @@ export const addNote = createAsyncThunk('notes/addNote', async (params: NoteType
 
 export const editNote = createAsyncThunk('notes/editNote', async (params: NoteType) => {
   try {
-    const { id, note, color, order } = params;
+    const { id, note, color } = params;
     const response = await axios.put(`${backUrl}/notes/${id}`, {
       id: id,
       note: note,
       color: color,
-      order: order,
     });
     return response.data;
   } catch (error) {

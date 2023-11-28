@@ -71,15 +71,7 @@ function App() {
                 {statusFetchNotes === 'loading' && <h4>Loading...</h4>}
                 {statusFetchNotes === 'success' &&
                   notes.map((note) => {
-                    return (
-                      <Note
-                        key={note.id}
-                        id={note.id}
-                        note={note.note}
-                        color={note.color}
-                        order={note.order}
-                      />
-                    );
+                    return <Note key={note.id} id={note.id} note={note.note} color={note.color} />;
                   })}
                 {statusFetchNotes === 'error' && (
                   <h4>

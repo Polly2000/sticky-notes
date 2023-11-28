@@ -28,17 +28,15 @@ interface INote {
   id?: number;
   color: string;
   note: string;
-  order?: any;
 }
 
-const Note: FC<INote> = ({ color, note, id, order }) => {
+const Note: FC<INote> = ({ color, note, id }) => {
   const dispatch = useAppDispatch();
   const [textIsWhite, setTextIsWhite] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [editIsClicked, setEditIsClicked] = useState<boolean>(false);
   const [noteText, setNoteText] = useState<string>(note);
   const [noteColor, setNoteColor] = useState<string>(color);
-  const [noteOrder, setNoteOrder] = useState<string>(order);
 
   useEffect(() => {
     if (color === '#ffffff') {
@@ -55,7 +53,6 @@ const Note: FC<INote> = ({ color, note, id, order }) => {
   const handleCancelEdit = () => {
     setNoteColor(color);
     setNoteText(note);
-    setNoteOrder(order);
     setEditIsClicked(false);
   };
 
@@ -146,11 +143,7 @@ const Note: FC<INote> = ({ color, note, id, order }) => {
               </SelectColorBlock>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
                 <Button
-                  onClick={() =>
-                    dispatch(
-                      editNote({ id: id, note: noteText, color: noteColor, order: noteOrder }),
-                    )
-                  }>
+                  onClick={() => dispatch(editNote({ id: id, note: noteText, color: noteColor }))}>
                   Save
                 </Button>
                 <Button onClick={handleCancelEdit}>Cancel</Button>

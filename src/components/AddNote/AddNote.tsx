@@ -28,7 +28,7 @@ const AddNote: FC<any> = ({ order }) => {
     if (noteText) {
       setNoteText('');
       setNoteColor('#ffffff');
-      dispatch(addNote({ note: noteText, color: noteColor, order: order }));
+      dispatch(addNote({ note: noteText, color: noteColor }));
     }
   };
 
