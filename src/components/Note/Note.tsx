@@ -1,8 +1,10 @@
 import React, { FC, useState, useEffect, useRef } from 'react';
 import {
+  StickyNotes,
   Card,
   ButtonsIcon,
   ButtonIcon,
+  Buttons,
   Text,
   Modal,
   ModalContent,
@@ -11,7 +13,6 @@ import {
   Textarea,
   SelectColorBlock,
   SelectColorButton,
-  StickyNotes,
 } from './styled';
 import { Button } from '../App/global';
 
@@ -106,8 +107,10 @@ const Note: FC<INote> = ({ color, note, id }) => {
                 <Modal>
                   <ModalContent>
                     <p>Do you want to delete this note?</p>
-                    <button onClick={() => handleDeleteNote()}>Yes</button>
-                    <button onClick={() => setShowModal(false)}>No</button>
+                    <Buttons>
+                      <Button onClick={() => handleDeleteNote()}>Yes</Button>
+                      <Button onClick={() => setShowModal(false)}>No</Button>
+                    </Buttons>
                   </ModalContent>
                 </Modal>
               )}

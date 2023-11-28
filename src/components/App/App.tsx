@@ -34,6 +34,8 @@ function App() {
     }
   }, [statusAddNote, statusEditNote, statusRemoveNote]);
 
+  // feat: save positions each note in backend
+
   return (
     <div>
       <Header />
@@ -71,11 +73,13 @@ function App() {
                   </h4>
                 )}
               </Notes>
-              <Bin>bin zone</Bin>
             </div>
           </div>
         </div>
         <BottomBlock>
+          <Bin>
+            <p>bin zone</p>
+          </Bin>
           {isError && (
             <Container>
               <Error>

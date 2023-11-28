@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const StickyNotes = styled.div`
+  width: 300px;
+  position: absolute;
+  top: 80px;
+  left: 420px;
+`;
+
 export const Card = styled.div<{ $bg: string; $color: boolean }>`
   display: flex;
   flex-direction: column;
@@ -40,6 +47,12 @@ export const ButtonIcon = styled.button`
   }
 `;
 
+export const Buttons = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 10px;
+`;
+
 export const Text = styled.p`
   height: 200px;
   padding: 0px 5px;
@@ -61,6 +74,9 @@ export const Modal = styled.div`
 `;
 
 export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #fff;
   width: 400px;
   height: 100px;
@@ -118,11 +134,4 @@ export const SelectColorButton = styled.button<{ $bg: string }>`
 
   &:active {
   }
-`;
-
-export const StickyNotes = styled.div`
-  width: 300px;
-  position: absolute;
-  top: 80px;
-  left: 420px;
 `;
