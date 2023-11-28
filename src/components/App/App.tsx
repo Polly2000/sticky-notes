@@ -8,17 +8,14 @@ import { useAppDispatch } from '../../redux/store';
 import { useSelector } from 'react-redux';
 import { selectError } from '../../redux/error/selectors';
 import { setIsError } from '../../redux/error/slice';
-import { setNotes } from '../../redux/notes/slice';
 import { selectNotes } from '../../redux/notes/selectors';
 import { fetchNotes } from '../../redux/notes/asyncActions';
-import { setDraggableNotes } from '../../redux/notes/asyncActions';
 
 import GlobalStyles, { Container } from './global';
 import { Notes, Error, ErrorElem, BottomBlock, ErrorButton, Bin } from './styled';
 
 function App() {
   const dispatch = useAppDispatch();
-  const [currentNote, setCurrentNote] = useState<any | any>(null);
   const [order, setOrder] = useState<number>(0);
   const { isError } = useSelector(selectError);
   const { notes, statusFetchNotes, statusAddNote, statusEditNote, statusRemoveNote } =
@@ -45,50 +42,6 @@ function App() {
     }
   }, [notes]);
 
-  //drag&drop
-  const dragStartHandler = (e: any, data: any) => {
-    console.log('drag', data);
-    setCurrentNote(data);
-    e.target.style.border = '1px solid #525252';
-    e.target.style.borderRadius = '10px';
-  };
-
-  const dragEndHandler = (e: any) => {
-    e.target.style.border = 'none';
-  };
-
-  const dragOverHandler = (e: any) => {
-    e.preventDefault();
-  };
-
-  const dropHandler = (e: any, data: any) => {
-    console.log('drop', data);
-    e.preventDefault();
-    dispatch(
-      setNotes(
-        notes.map((note: any) => {
-          if (note.id === data.id) {
-            return { ...note, order: currentNote.order };
-          }
-          if (note.id === currentNote.id) {
-            return { ...note, order: data.order };
-          }
-          return note;
-        }),
-      ),
-    );
-  };
-
-  const sortNotes = (a: any, b: any) => {
-    if (a.order > b.order) {
-      return 1;
-    } else {
-      return -1;
-    }
-  };
-
-  const sortedNotes = notes.concat().sort(sortNotes);
-
   return (
     <div>
       <Header />
@@ -106,7 +59,7 @@ function App() {
               gap: '20px',
               width: '100%',
             }}>
-            {order !== 0 && <AddNote order={order} />}
+            {<AddNote order={order} />}
             <div
               style={{
                 display: 'flex',
@@ -117,7 +70,7 @@ function App() {
               <Notes>
                 {statusFetchNotes === 'loading' && <h4>Loading...</h4>}
                 {statusFetchNotes === 'success' &&
-                  sortedNotes.sort(sortNotes).map((note) => {
+                  notes.map((note) => {
                     return (
                       <Note
                         key={note.id}
@@ -125,11 +78,6 @@ function App() {
                         note={note.note}
                         color={note.color}
                         order={note.order}
-                        data={note}
-                        dragStartHandler={dragStartHandler}
-                        dragEndHandler={dragEndHandler}
-                        dragOverHandler={dragOverHandler}
-                        dropHandler={dropHandler}
                       />
                     );
                   })}

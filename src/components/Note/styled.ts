@@ -119,3 +119,10 @@ export const SelectColorButton = styled.button<{ $bg: string }>`
   &:active {
   }
 `;
+
+export const StickyNotes = styled.div`
+  width: 300px;
+  position: absolute;
+  top: 80px;
+  left: 420px;
+`;

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import {
   Card,
   ButtonsIcon,
@@ -11,6 +11,7 @@ import {
   Textarea,
   SelectColorBlock,
   SelectColorButton,
+  StickyNotes,
 } from './styled';
 import { Button } from '../App/global';
 
@@ -28,24 +29,9 @@ interface INote {
   color: string;
   note: string;
   order?: any;
-  data: any;
-  dragStartHandler: any;
-  dragEndHandler: any;
-  dragOverHandler: any;
-  dropHandler: any;
 }
 
-const Note: FC<INote> = ({
-  color,
-  note,
-  id,
-  order,
-  data,
-  dragStartHandler,
-  dragEndHandler,
-  dragOverHandler,
-  dropHandler,
-}) => {
+const Note: FC<INote> = ({ color, note, id, order }) => {
   const dispatch = useAppDispatch();
   const [textIsWhite, setTextIsWhite] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -73,73 +59,105 @@ const Note: FC<INote> = ({
     setEditIsClicked(false);
   };
 
-  // noteOrder && console.log(noteOrder);
+  // new resolution
+  const [allowMove, setAllowMove] = useState(false);
+  const stickyNoteRef = useRef<any | any>();
+
+  const [dx, setDx] = useState(0);
+  const [dy, setDy] = useState(0);
+
+  const handleMouseDown = (e: any) => {
+    setAllowMove(true);
+    const dimensions = stickyNoteRef.current.getBoundingClientRect();
+    setDx(e.clientX - dimensions.x);
+    setDy(e.clientY - dimensions.y);
+  };
+
+  const handleMouseMove = (e: any) => {
+    if (allowMove) {
+      console.log('allow moving - ', e.clientX, dx, e.clientY, dy);
+      const x = e.clientX - dx;
+      const y = e.clientY - dy;
+      console.log('inside mouse move', x, y);
+      stickyNoteRef.current.style.left = x + 'px';
+      stickyNoteRef.current.style.top = y + 'px';
+    }
+  };
+
+  function handleMouseUp() {
+    setAllowMove(false);
+  }
 
   return (
-    <div
-      draggable={true}
-      onDragStart={(e: any) => dragStartHandler(e, data)}
-      onDragLeave={(e: any) => dragEndHandler(e)}
-      onDragEnd={(e: any) => dragEndHandler(e)}
-      onDragOver={(e: any) => dragOverHandler(e)}
-      onDrop={(e: any) => dropHandler(e, data)}>
+    <div>
       {!editIsClicked ? (
-        <Card $bg={noteColor} $color={textIsWhite}>
-          <ButtonsIcon $color={textIsWhite}>
-            <ButtonIcon onClick={() => setEditIsClicked(true)}>
-              <img src={textIsWhite ? Edit : EditDark} alt="Edit note" />
-            </ButtonIcon>
-            <ButtonIcon onClick={() => setShowModal(true)}>
-              <img src={textIsWhite ? Delete : DeleteDark} alt="Delete note" />
-            </ButtonIcon>
-          </ButtonsIcon>
-          {showModal && (
-            <Modal>
-              <ModalContent>
-                <p>Do you want to delete this note?</p>
-                <button onClick={() => handleDeleteNote()}>Yes</button>
-                <button onClick={() => setShowModal(false)}>No</button>
-              </ModalContent>
-            </Modal>
-          )}
-          <Text> {noteText} </Text>
-        </Card>
+        <StickyNotes ref={stickyNoteRef}>
+          <div
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}>
+            <Card $bg={noteColor} $color={textIsWhite}>
+              <ButtonsIcon $color={textIsWhite}>
+                <ButtonIcon onClick={() => setEditIsClicked(true)}>
+                  <img src={textIsWhite ? Edit : EditDark} alt="Edit note" />
+                </ButtonIcon>
+                <ButtonIcon onClick={() => setShowModal(true)}>
+                  <img src={textIsWhite ? Delete : DeleteDark} alt="Delete note" />
+                </ButtonIcon>
+              </ButtonsIcon>
+              {showModal && (
+                <Modal>
+                  <ModalContent>
+                    <p>Do you want to delete this note?</p>
+                    <button onClick={() => handleDeleteNote()}>Yes</button>
+                    <button onClick={() => setShowModal(false)}>No</button>
+                  </ModalContent>
+                </Modal>
+              )}
+              <Text> {noteText} </Text>
+            </Card>
+          </div>
+        </StickyNotes>
       ) : (
-        <Card $bg={noteColor} $color={textIsWhite}>
-          <EditTitle $color={textIsWhite}>Edit Note</EditTitle>
-          <Block>
-            <Textarea
-              id="add_note"
-              name="add_note"
-              placeholder="Enter your note here.."
-              value={noteText}
-              onChange={(e) => setNoteText(e.target.value)}
-            />
-            <SelectColorBlock>
-              <SelectColorButton $bg={'#ffffff'} onClick={() => setNoteColor('#ffffff')} />
-              <SelectColorButton $bg={'#42b883'} onClick={() => setNoteColor('#42b883')} />
-              <SelectColorButton $bg={'#64c4ed'} onClick={() => setNoteColor('#64c4ed')} />
-              <SelectColorButton $bg={'#fbc'} onClick={() => setNoteColor('#fbc')} />
-              <SelectColorButton $bg={'#a2befa'} onClick={() => setNoteColor('#a2befa')} />
-              <SelectColorButton $bg={'#ffaf3f'} onClick={() => setNoteColor('#ffaf3f')} />
-              <SelectColorButton $bg={'#ef7564'} onClick={() => setNoteColor('#ef7564')} />
-              <SelectColorButton $bg={'#cd8de5'} onClick={() => setNoteColor('#cd8de5')} />
-              <SelectColorButton $bg={'#c9d1d3'} onClick={() => setNoteColor('#c9d1d3')} />
-              <SelectColorButton $bg={'#7bc86c'} onClick={() => setNoteColor('#7bc86c')} />
-              <SelectColorButton $bg={'#29cce5'} onClick={() => setNoteColor('#29cce5')} />
-              <SelectColorButton $bg={'#ff8ed4'} onClick={() => setNoteColor('#ff8ed4')} />
-            </SelectColorBlock>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
-              <Button
-                onClick={() =>
-                  dispatch(editNote({ id: id, note: noteText, color: noteColor, order: noteOrder }))
-                }>
-                Save
-              </Button>
-              <Button onClick={handleCancelEdit}>Cancel</Button>
-            </div>
-          </Block>
-        </Card>
+        <StickyNotes ref={stickyNoteRef}>
+          <Card $bg={noteColor} $color={textIsWhite}>
+            <EditTitle $color={textIsWhite}>Edit Note</EditTitle>
+            <Block>
+              <Textarea
+                id="add_note"
+                name="add_note"
+                placeholder="Enter your note here.."
+                value={noteText}
+                onChange={(e) => setNoteText(e.target.value)}
+              />
+              <SelectColorBlock>
+                <SelectColorButton $bg={'#ffffff'} onClick={() => setNoteColor('#ffffff')} />
+                <SelectColorButton $bg={'#42b883'} onClick={() => setNoteColor('#42b883')} />
+                <SelectColorButton $bg={'#64c4ed'} onClick={() => setNoteColor('#64c4ed')} />
+                <SelectColorButton $bg={'#fbc'} onClick={() => setNoteColor('#fbc')} />
+                <SelectColorButton $bg={'#a2befa'} onClick={() => setNoteColor('#a2befa')} />
+                <SelectColorButton $bg={'#ffaf3f'} onClick={() => setNoteColor('#ffaf3f')} />
+                <SelectColorButton $bg={'#ef7564'} onClick={() => setNoteColor('#ef7564')} />
+                <SelectColorButton $bg={'#cd8de5'} onClick={() => setNoteColor('#cd8de5')} />
+                <SelectColorButton $bg={'#c9d1d3'} onClick={() => setNoteColor('#c9d1d3')} />
+                <SelectColorButton $bg={'#7bc86c'} onClick={() => setNoteColor('#7bc86c')} />
+                <SelectColorButton $bg={'#29cce5'} onClick={() => setNoteColor('#29cce5')} />
+                <SelectColorButton $bg={'#ff8ed4'} onClick={() => setNoteColor('#ff8ed4')} />
+              </SelectColorBlock>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px' }}>
+                <Button
+                  onClick={() =>
+                    dispatch(
+                      editNote({ id: id, note: noteText, color: noteColor, order: noteOrder }),
+                    )
+                  }>
+                  Save
+                </Button>
+                <Button onClick={handleCancelEdit}>Cancel</Button>
+              </div>
+            </Block>
+          </Card>
+        </StickyNotes>
       )}
     </div>
   );
