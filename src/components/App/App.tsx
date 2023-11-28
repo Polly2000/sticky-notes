@@ -16,7 +16,6 @@ import { Notes, Error, ErrorElem, BottomBlock, ErrorButton, Bin } from './styled
 
 function App() {
   const dispatch = useAppDispatch();
-  const [order, setOrder] = useState<number>(0);
   const { isError } = useSelector(selectError);
   const { notes, statusFetchNotes, statusAddNote, statusEditNote, statusRemoveNote } =
     useSelector(selectNotes);
@@ -32,15 +31,8 @@ function App() {
       statusRemoveNote === 'success'
     ) {
       dispatch(fetchNotes());
-      setOrder(notes.length + 1);
     }
   }, [statusAddNote, statusEditNote, statusRemoveNote]);
-
-  useEffect(() => {
-    if (notes.length) {
-      setOrder(notes.length + 1);
-    }
-  }, [notes]);
 
   return (
     <div>
@@ -59,7 +51,7 @@ function App() {
               gap: '20px',
               width: '100%',
             }}>
-            {<AddNote order={order} />}
+            {<AddNote />}
             <div
               style={{
                 display: 'flex',

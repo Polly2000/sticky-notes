@@ -8,7 +8,7 @@ import { addNote } from '../../redux/notes/asyncActions';
 
 import { CreateNote, Title, Block, Textarea, SelectColorBlock, SelectColorButton } from './styled';
 
-const AddNote: FC<any> = ({ order }) => {
+const AddNote: FC<any> = () => {
   const dispatch = useAppDispatch();
   const { notes } = useSelector(selectNotes);
   const [noteColor, setNoteColor] = useState<string>('#ffffff');
